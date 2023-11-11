@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/admsty.css') }}">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Área do Cliente - Academia Fitness</title>
+    <style>
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Área do Cliente - Academia Fitness</h1>
+    </header>
+
+    <nav>
+        <a href="#inicio">Início</a>
+        <a href="#treinos">Treinos</a>
+        <a href="#horarios">Horários</a>
+        <a href="#dietas">Dietas</a>
+        <a href="#contato">Contato</a>
+    </nav>
+
+    <section id="inicio">
+        <h2>Bem-vindo à Área do Cliente</h2>
+        <p>Gerencie suas informações e objetivos de forma eficiente.</p>
+    </section>
+
+    <section id="dietas">
+        <h2>Gerenciar Dietas</h2>
+
+        <form id="addDietaForm">
+            <label for="dieta">Adicionar Dieta:</label>
+            <input type="text" id="dieta" name="dieta" required>
+            <button type="button" onclick="adicionarDieta()">Adicionar</button>
+        </form>
+
+        <ul id="listaDietas">
+            <!-- Lista de dietas será exibida aqui -->
+        </ul>
+
+        <form id="removerDietaForm">
+            <label for="dietaRemover">Remover Dieta:</label>
+            <select id="dietaRemover" name="dietaRemover" required>
+                <!-- Opções de dietas serão adicionadas dinamicamente aqui -->
+            </select>
+            <button type="button" onclick="removerDieta()">Remover</button>
+        </form>
+    </section>
+
+  
+
+</body>
+</html>
