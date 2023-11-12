@@ -1,16 +1,10 @@
+# app/__init__.py
 from flask import Flask
-from flask import render_template
-App = Flask(__name__)
 
+def create_app():
+    app = Flask(__name__)
 
+    from .app import app_bp
+    app.register_blueprint(app_bp)
 
-@App.route('/login')
-def index():
-    return render_template('func.html')
-@App.route('/menu')
-def menu():
-    return render_template('adm.html')
-
-if __name__=="__main__":
-    
-    App.run(debug= True)
+    return app
