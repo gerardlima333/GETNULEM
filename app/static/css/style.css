@@ -1,6 +1,6 @@
 body {
   font-family: Arial, sans-serif;
-  background-image: url(../img/background.png);
+  background-image: url(../img/treino.png);
   background-repeat: no-repeat;
   background-size: cover;
   
@@ -21,7 +21,7 @@ h1 {
   align-items: center;
   width: auto;
   height: auto;
-  background-color:aliceblue ;
+  background-color:transparent;
 }
 form {
 
@@ -86,5 +86,22 @@ a :hover{
 .error {
   color: #ff0000;
   margin-bottom: 10px;
+}
+
+.cada{
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  background-color: white;
+  margin-top: auto;
+  margin-top: 700px;
+  width: 300px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #ffffff;
+  border: 1px solid #cccccc;
+  border-radius: 5px;
+  box-shadow: 0 0 5px #cccccc;
+
 }
 
