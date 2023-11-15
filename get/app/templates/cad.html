@@ -15,7 +15,7 @@
         }
 
         header {
-            background-color: #333;
+            background-color: transparent;
             color: #fff;
             text-align: center;
             padding: 20px 0;
@@ -61,8 +61,17 @@
     <header>
         <h1>Cadastro</h1>
     </header>
+    <ul>
+        {% for Usuario in Usuarios %}
+            <li>
+                <strong>Nome:</strong> {{ Usuario.nome }}<br>
+                <strong>Email:</strong> {{ Usuario.email }}
+            </li>
+        {% endfor %}
+    </ul>
+    
 
-    <form>
+    <form method="POST" action="{{ url_for('app.adicionar_usuario') }}">
         <label for="nome">Nome:</label>
         <input type="text" id="nome" name="nome" required>
 
@@ -74,6 +83,7 @@
 
         <button type="submit">Cadastrar</button>
     </form>
+
 
 </body>
 </html>
