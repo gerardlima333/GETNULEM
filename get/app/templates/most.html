@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Usuários</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        li {
+            margin-bottom: 10px;
+            border: 1px solid #ddd;
+            padding: 10px;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Lista de Usuários</h1>
+
+    <ul>
+        {% for usuario in usuarios %}
+            <li>
+                <strong>Nome:</strong> {{ usuario.nome }}<br>
+                <strong>Email:</strong> {{ usuario.email }}
+                <strong>senha:</strong> {{usuario.senha}}
+                
+            </li>
+        {% endfor %}
+    </ul>
+
+</body>
+</html>
