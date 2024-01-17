@@ -61,19 +61,7 @@
     <header>
         <h1>Cadastro</h1>
     </header>
-    {% if usuarios %}
-    <ul>
-        {% for usuario in usuarios %}
-            <a>
-                <strong>Nome:</strong> {{ usuario.nome }}<br>
-                <strong>Email:</strong> {{ usuario.email }}<br>
-            </a>
-        {% endfor %}
-    </ul>
-{% else %}
-    <p>Nenhum usuário encontrado.</p>
-{% endif %}
-  
+
 
     <form method="POST" action="{{ url_for('app.adicionar_usuario') }}">
         <label for="nome">Nome:</label>

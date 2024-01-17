@@ -18,8 +18,7 @@ def adicionar_usuario():
         novo_usuario = Usuario(nome=nome, email=email, senha= senha)
         db.session.add(novo_usuario)
         db.session.commit()
-        return "usuario adicinado."
-        
+        return render_template('adm.html')
 
 
     return redirect(url_for('app.index'))
@@ -40,17 +39,34 @@ def adicionar_usuario():
         novo_usuario = Usuario(nome=nome, email=email, senha= senha)
         db.session.add(novo_usuario)
         db.session.commit()
-        return "usuario adicinado."
+    return render_template("adm.html")
 
 
 @app_bp.route('/most', methods=['GET', 'POST'])
 def most():
     usuarios = Usuario.query.all()
-
-    return render_template('adm.html', usuarios=usuarios)
     
+    
+
+    return render_template('most.html', usuarios=usuarios)
+
+@app_bp.route('/delete/<int:usuario_id>', methods=['POST', 'GET'])
+def delete_usuario(usuario_id):
+    usuario = Usuario.query.get(usuario_id)
+
+    if usuario:
+        db.session.delete(usuario)
+        db.session.commit()
+
+    return redirect(url_for('app.most'))
+        
 
 @app_bp.route('/login')
 def login():
     return render_template('func.html')
 
+
+@app_bp.route('/adm')
+
+def mosti():
+    return render_template('adm.html')
