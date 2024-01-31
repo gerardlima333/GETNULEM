@@ -4,24 +4,28 @@
     <meta charset="UTF-8">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/admsty.css') }}">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Área do Cliente - Academia Fitness</title>
+    <title>Área do Cliente - Agenda Fitness</title>
     <style>
     </style>
 </head>
 <body>
 
     <header>
-        <h1>Area do Cliente</h1>
+        {% if erro %}
+        <div style="color: rgb(9, 255, 0);">{{ erro }}</div>
+        {% endif %}
+        <h1>Agenda Fitness</h1>
+        <h1>quem tem objetivo nao tem desculpas. treine com determinaçao.</h1>
     </header>
 
     <nav>
         <a href="#">Meu perfil</a>
         <a href="#">Início</a>
         <a href="#horarios">Horários</a>
-        <a href="#dietas">Dietas</a>
         <a href="#contato">Contato</a>
     </nav>
     <section class="cards-treino">
+
         <div class="card card0">
             <h2>card</h2>
             <p>conteudo</p>
@@ -36,10 +40,7 @@
             <h2>Card 2</h2>
             <p>Conteúdo do Card 2</p>
         </div>
-
-        <div class="card card3">
-            <h2>Card 3</h2>
-            <p>Conteúdo do Card 3</p>
+           
         </div>
     </section>
 

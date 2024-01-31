@@ -23,12 +23,37 @@ def adicionar_usuario():
 
     return redirect(url_for('app.index'))
 
+@app_bp.route('/enter', methods= ['GET', 'POST'])
+def rend():
+     return render_template('log.html')
+
+@app_bp.route('/login', methods= ['GET','POST'])
+def login():
+    render_template('log.html')
+    usuario = Usuario.query.all()
+    
+    if request.method == 'POST':
+        usus = request.form['nome']
+        sens = request.form['senha']
+        if any(usus == u.nome and sens == u.senha for u in usuario):
+            mensagem_erro2 = f'bem vindo {usus}'
+    # Lógica para autenticação bem-sucedida
+            return render_template("adm.html", erro= mensagem_erro2)
+        else:
+            mensagem_erro = "usuario nao encontrado."
+            return render_template('log.html', erro = mensagem_erro)
+       
+    
+    return render_template('adm.html')
+
+  
 
 @app_bp.route('/', methods= ['GET'])
 def index():
     
     usuarios = Usuario.query.all()
     return render_template('cad.html', usuarios=usuarios)
+
 def adicionar_usuario():
     if request.method == 'GET':
         nome = request.form['nome']
@@ -45,8 +70,7 @@ def adicionar_usuario():
 @app_bp.route('/most', methods=['GET', 'POST'])
 def most():
     usuarios = Usuario.query.all()
-    
-    
+       
 
     return render_template('most.html', usuarios=usuarios)
 
@@ -61,9 +85,6 @@ def delete_usuario(usuario_id):
     return redirect(url_for('app.most'))
         
 
-@app_bp.route('/login')
-def login():
-    return render_template('func.html')
 
 
 @app_bp.route('/adm')

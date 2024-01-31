@@ -28,7 +28,6 @@
             background-color: #fff;
             border-radius: 8px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            align-items: center;
         }
 
         label {
@@ -44,7 +43,6 @@
         }
 
         button {
-            align-items: center;
             background-color: #333;
             color: #fff;
             padding: 10px 15px;
@@ -56,41 +54,34 @@
         button:hover {
             background-color: #555;
         }
-        .centro {
-            text-align: center;
-            margin: 0 auto;
-            margin-top: 10vh; /* Opcional: ajusta a altura para a metade da tela */
-        }
-        
     </style>
 </head>
 <body>
 
     <header>
+        <h1>
+            {% if erro %}
+        <div style="color: red;">{{ erro }}</div>
+        {% endif %}
+        </h1>
+
         <h1>Cadastro</h1>
     </header>
 
-    <div class="centro">
-        <form method="POST" action="{{ url_for('app.adicionar_usuario') }}">
-            <label for="nome">Nome:</label>
-            <input type="text" id="nome" name="nome" autocomplete="on">
-        
-            <label for="email">E-mail:</label>
-            <input type="email" id="email" name="email" autocomplete="email">
-        
-            <label for="senha">Senha:</label>
-            <input type="password" id="senha" name="senha" autocomplete="on">
-        
-            <button class="cad" type="submit">Cadastrar</button>
-        </form>
-        
-        <form method="post" action="{{ url_for('app.rend') }}">
-            <p> ja tem conta? clique aqui!</p>
-            <button class="ent" type="submit">Entrar</button>
-        </form>
 
-    </div>
-    
+    <form method="POST" action="{{ url_for('app.login') }}">
+        <label for="nome">Nome:</label>
+        <input type="text" id="nome" name="nome" autocomplete="on">
+
+        <label for="senha">Senha:</label>
+        <input type="password" id="senha" name="senha" autocomplete="on">
+
+        <form method="post" action="{{ url_for('app.login')}}">          
+            <button class="ent" type="submit">entrar</button>
+        </form>
+            
+    </form>
+
 
 </body>
 </html>
