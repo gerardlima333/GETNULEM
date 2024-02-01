@@ -31,7 +31,6 @@ def rend():
 
 @app_bp.route('/login', methods= ['GET','POST'])
     
-
 def login():
     render_template('log.html')
     usuario = Usuario.query.all()
@@ -48,6 +47,8 @@ def login():
             return render_template('log.html', erro = mensagem_erro)
            
     return render_template('adm.html')
+@app_bp.route("/addca", methods= [  'GET', 'POST'])
+#def addcard():
 
 @app_bp.route('/', methods= ['GET'])
 def index():

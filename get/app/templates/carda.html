@@ -24,25 +24,20 @@
         <a href="#contato">Contato</a>
     </nav>
     <section class="cards-treino">
+        <form method="POST" action="{{ url_for('app.addcard') }}">
+            <div class="card card0">
+                <h2>card 1</h2>
+                <label for="dieta">dieta:</label>
+                <input type="text" name="dieta" id="dieta">
 
-        <div class="card card0">
-            <h2>card 1</h2>
-            <p>conteudo</p>
-        </div>
+                <label for="livre">anotaçoes:</label>
+                <input type="text" name="livre" id="livre">
 
-        <div class="card card1">
-            <h2>Card 1</h2>
-            <p>Conteúdo do Card 1</p>
-        </div>
-
-        <div class="card card2">
-            <h2>Card 2</h2>
-            <p>Conteúdo do Card 2</p>
-        </div>
-        <form method="post" action="{{ url_for('app.addcard') }}">
-            <button class="ent" type="submit">criar um card</button>
+                <button class="card" type="submit"> enviar</button>
+                <p></p>
+            </div>
         </form>
-           
+        
         </div>
     </section>
 
