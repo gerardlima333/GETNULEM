@@ -14,7 +14,7 @@ class Card(db.Model):
     dieta = db.Column(db.String(300), nullable= True)
     hora = db.Column(db.String(100), unique= False, nullable= False)    
     livre = db.Column(db.String(100), unique= False, nullable= True)
-    perfil_id = db.Column(db.Integer, db.ForeignKey('usuario.id'), nullable=False)
+    usuario = db.Column(db.Integer, db.ForeignKey('usuario.id'), nullable=False)
 
 
 

@@ -12,7 +12,7 @@
 
     <header>
         {% if erro %}
-        <div style="color: rgb(9, 255, 0);">{{ erro }}</div>
+        <div style="color: rgb(255, 60, 0);">{{ erro }}</div>
         {% endif %}
         <h1>Agenda Fitness</h1>
         <h1>quem tem objetivo nao tem desculpas. treine com determinaçao.</h1>
@@ -23,8 +23,10 @@
         <a href="#horarios">Horários</a>
         <a href="#contato">Contato</a>
     </nav>
-    <section class="cards-treino">
+ 
         <form method="POST" action="{{ url_for('app.addcard') }}">
+            <label >nome usuario</label>
+            <input type="text" name="nome_usuario" value="{{ nome_do_usuario }}">
             <div class="card card0">
                 <h2>card 1</h2>
                 <label for="dieta">dieta:</label>
@@ -34,7 +36,6 @@
                 <input type="text" name="livre" id="livre">
 
                 <button class="card" type="submit"> enviar</button>
-                <p></p>
             </div>
         </form>
         

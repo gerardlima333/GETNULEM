@@ -1,9 +1,8 @@
-from flask import Blueprint, render_template, request, redirect, url_for
+from flask import Blueprint, render_template, request, redirect, url_for, current_app
 from app.models import Usuario
 from app import db
 
 app_bp = Blueprint('app', __name__)
-
 
 @app_bp.route('/adm')   
 def mosti():
@@ -24,13 +23,7 @@ def adicionar_usuario():
         return render_template('adm.html')
     return redirect(url_for('app.index'))
 
-@app_bp.route('/enter', methods= ['GET', 'POST'])
-
-def rend():
-     return render_template('log.html')
-
 @app_bp.route('/login', methods= ['GET','POST'])
-    
 def login():
     render_template('log.html')
     usuario = Usuario.query.all()
@@ -41,18 +34,41 @@ def login():
         if any(usus == u.nome and sens == u.senha for u in usuario):
             mensagem_erro2 = f'bem vindo {usus}'
     # Lógica para autenticação bem-sucedida
-            return render_template("adm.html", erro= mensagem_erro2, nome = usus)
+            return render_template("adm.html", erro= mensagem_erro2, nome = usus, nome_usuario= usus)
         else:
             mensagem_erro = "usuario nao encontrado."
             return render_template('log.html', erro = mensagem_erro)
            
     return render_template('adm.html')
-@app_bp.route("/addca", methods= [  'GET', 'POST'])
-#def addcard():
+
+@app_bp.route("/card", methods=['POST', 'GET'])
+def c():
+    return render_template ('carda.html')
+
+@app_bp.route("/addca", methods=['POST'])
+
+def addcard():
+    nome_usuario = request.form['nome_usuario']
+    usuario = Usuario.query.filter_by(nome=nome_usuario).first()
+    if usuario is None:
+        return render_template('carda.html', erro="Usuário não encontrado")
+    return render_template('carda.html')
+
+    #if request.method == 'POST':        
+   #     dieta = request.form['dieta']
+  #      hora = request.form['hora']
+ #       livre = request.form['livre']
+#
+    #    novo_card = usuario.Card(dieta=dieta, hora=hora, livre=livre, perfil=usuario)
+   #     
+  #      db.session.add(novo_card)
+ #       db.session.commit()
+#
+#        return render_template('carda.html', sucesso="Card adicionado com sucesso")
+
 
 @app_bp.route('/', methods= ['GET'])
-def index():
-    
+def index():   
     usuarios = Usuario.query.all()
     return render_template('cad.html', usuarios=usuarios)
 
@@ -84,3 +100,7 @@ def delete_usuario(usuario_id):
 
     return redirect(url_for('app.most'))
         
+        
+@app_bp.route('/enter', methods= ['GET', 'POST'])
+def rend():
+     return render_template('log.html')
