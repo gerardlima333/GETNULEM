@@ -37,10 +37,14 @@
         {% for usuario in usuarios %}
             <li>
                 <strong>Nome:</strong> {{ usuario.nome }}<br>
-                <strong>Email:</strong> {{ usuario.email }}
-                <strong>senha:</strong> {{usuario.senha}}
-                <strong>dieta:</strong> {{usuario.dieta}}
-                <strong>livre:</strong> {{usuario.livre}}
+                <strong>Email:</strong> {{ usuario.email }}<br>
+                <strong>Senha:</strong> {{ usuario.senha }}<br>
+    
+                <!-- Exibindo informações relacionadas ao Card do usuário -->
+                <strong>Dieta:</strong> {{ usuario.cards[0].dieta }}<br>
+                <strong>Livre:</strong> {{ usuario.cards[0].livre }}<br>
+    
+
                 <a class="delete_link" href="/delete/{{ usuario.id }}">Excluir</a>
                 
             </li>

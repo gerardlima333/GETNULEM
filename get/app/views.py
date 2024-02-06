@@ -1,5 +1,5 @@
 from flask import Blueprint, render_template, request, redirect, url_for, current_app
-from app.models import Usuario
+from app.models import Usuario, Card
 from app import db
 
 app_bp = Blueprint('app', __name__)
@@ -52,19 +52,21 @@ def addcard():
     usuario = Usuario.query.filter_by(nome=nome_usuario).first()
     if usuario is None:
         return render_template('carda.html', erro="Usuário não encontrado")
-    return render_template('carda.html')
+    else:
+        if request.method == 'POST':
+            dieta = request.form['dieta']        
+            hora = request.form['hora']
+            livre = request.form['livre']
+            usuario_id = usuario.id
+       
+            novo_card = Card(dieta=dieta, hora=hora, livre=livre, usuario_id = usuario_id)
+            db.session.add(novo_card)
+            db.session.commit()
+        
+       
+            return render_template('carda.html', sucesso="Card adicionado com sucesso")
+                
 
-    #if request.method == 'POST':        
-   #     dieta = request.form['dieta']
-  #      hora = request.form['hora']
- #       livre = request.form['livre']
-#
-    #    novo_card = usuario.Card(dieta=dieta, hora=hora, livre=livre, perfil=usuario)
-   #     
-  #      db.session.add(novo_card)
- #       db.session.commit()
-#
-#        return render_template('carda.html', sucesso="Card adicionado com sucesso")
 
 
 @app_bp.route('/', methods= ['GET'])
