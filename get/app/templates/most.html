@@ -32,6 +32,13 @@
 <body>
 
     <h1>Lista de Usuários</h1>
+    {% if usuarios %}
+    <!-- A lista de usuários não está vazia -->
+    {{ usuarios[0].nome }}  {# Acessando o nome do primeiro usuário como exemplo #}
+    {% else %}
+    <!-- A lista de usuários está vazia -->
+    Sem usuários disponíveis.
+    {% endif %}
 
     <ul>
         {% for usuario in usuarios %}
@@ -39,10 +46,25 @@
                 <strong>Nome:</strong> {{ usuario.nome }}<br>
                 <strong>Email:</strong> {{ usuario.email }}<br>
                 <strong>Senha:</strong> {{ usuario.senha }}<br>
-    
-                <!-- Exibindo informações relacionadas ao Card do usuário -->
-                <strong>Dieta:</strong> {{ usuario.cards[0].dieta }}<br>
-                <strong>Livre:</strong> {{ usuario.cards[0].livre }}<br>
+                <strong>Dieta:</strong>
+                {% if usuario.cards and usuario.cards[0] %}
+                    {{ usuario.cards[0].dieta }}
+                {% else %}
+                    Nenhuma dieta disponível
+                {% endif %}<br>
+                <strong>Dieta:</strong>
+                {% if usuario.cards and usuario.cards[0] %}
+                    {{ usuario.cards[0].dieta }}
+                {% else %}
+                    Nenhuma dieta disponível
+                {% endif %}<br>
+            
+                <strong>Livre:</strong> 
+                {% if usuario.cards and usuario.cards[0] %}
+                    {{ usuario.cards[0].dieta}}
+                {%else %}
+                   sem anotaçoes.
+                {% endif %} <br>
     
 
                 <a class="delete_link" href="/delete/{{ usuario.id }}">Excluir</a>

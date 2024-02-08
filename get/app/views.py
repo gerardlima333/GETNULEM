@@ -12,9 +12,20 @@ def mosti():
 @app_bp.route('/adicionar_usuario', methods=['GET', 'POST'])
 def adicionar_usuario():
     if request.method == 'POST':
+        email= request.form['email']
+        if len(email) <= 20:
+            mensagem_erro03= "Email nao é valido."
+            return render_template('cad.html' ,erro= mensagem_erro03)
+        else:
+            email= request.form['email']
         nome = request.form['nome']
-        email = request.form['email']
         senha= request.form['senha']
+        if len(senha) <= 7:
+            mensagem_erro03= "minimo 8 caracteres para senha."
+            return render_template('cad.html', erro= mensagem_erro03)
+        else:
+            senha= request.form['senha']     
+
         
                
         novo_usuario = Usuario(nome=nome, email=email, senha= senha)
