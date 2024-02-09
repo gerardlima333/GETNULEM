@@ -6,6 +6,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Área do Cliente - Agenda Fitness</title>
     <style>
+
+        form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            max-width: 600px;
+            width: 100%;
+            padding: 20px;
+            background-color: transparent;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(213, 212, 212, 0.1);
+            align-items: center;
+        }
+        
     </style>
 </head>
 <body>
@@ -25,10 +39,11 @@
     </nav>
  
         <form method="POST" action="{{ url_for('app.addcard') }}">
-            <label >nome usuario</label>
-            <input type="text" name="nome_usuario" value="{{ nome_do_usuario }}">
+            
             <div class="card card0">
                 <h2>card 1</h2>
+                <label >nome usuario</label>
+                <input type="text" name="nome_usuario" value="{{ nome_do_usuario }}"> 
                 <label for="dieta">dieta:</label>
                 <input type="text" name="dieta" id="dieta">
 
